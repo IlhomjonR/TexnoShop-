@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Buyurtmalar ro'yxati</h2>
+    <ul class="list-group">
+        {% for order in orders %}
+            <li class="list-group-item">
+                Buyurtma ID: {{ order.id }} - User: {{ order.user.username }} - Name: {{ order.product.name }} - Date: {{ order.order_date}}
+                <ul>
+                    {% for item in order.items.all %}
+                        <li>{{ item.product.name }} - {{ item.quantity }} pcs - {{ item.address }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
